@@ -1,1 +1,1 @@
-最后一次部署: 2026-09-10 20:43:20 UTC | 区域: us-east | URL: https://zdsamsnn--proxy-app-web-server.modal.run
+最后一次部署: 2026-09-11 07:55:05 UTC | 区域: ap-northeast-3 | URL: https://rannan1999--theone-app-web_server.modal.run
