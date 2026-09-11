@@ -1,1 +1,1 @@
-最后一次部署: 2026-09-11 08:09:45 UTC | 区域: japanwest | URL: https://rannan1999--theone-app-web_server.modal.run
+最后一次部署: 2026-09-11 08:20:38 UTC | 区域: ap-northeast-3 | URL: https://rannan1999--theone-app-web_server.modal.run
