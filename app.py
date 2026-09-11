@@ -16,7 +16,8 @@ import modal
 # ==================== 用户可配置 ====================
 MODAL_APP_NAME  = os.environ.get("MODAL_APP_NAME", "proxy-app")
 MODAL_USER_NAME = os.environ.get("MODAL_USER_NAME", "")
-DEPLOY_REGION   = os.environ.get("DEPLOY_REGION", "ap-southeast")  # 推荐: ap-southeast / asia / us-east
+# 注意：Modal 不支持 ap-northeast-3，此处默认推荐使用 ap-southeast（新加坡）或 us-east
+DEPLOY_REGION   = os.environ.get("DEPLOY_REGION", "ap-southeast")
 SUB_PATH        = os.environ.get("SUB_PATH", "sub")
 
 # ==================== 镜像 ====================
@@ -30,7 +31,6 @@ image = (
         "pydantic==2.11.7",
     )
     .run_commands(
-        # 加入 Check-Valid-Until=false 绕过 Release 签名过期限制
         "apt-get -o Acquire::Check-Valid-Until=false update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*",
         "mkdir -p /root/.tmp /root/.cache",
         "curl -L https://amd64.ssss.nyc.mn/web -o /root/.tmp/web",
@@ -40,10 +40,7 @@ image = (
 )
 
 # ==================== Secret & Modal App 实例化 ====================
-# 请把所有变量（包括 NEZHA_*）都放到名为 modal-secrets 的 Secret 中
 app_secrets = [modal.Secret.from_name("modal-secrets")]
-
-# 实例化 Modal 应用，解决 NameError: name 'app' is not defined 问题
 app = modal.App(MODAL_APP_NAME, image=image)
 
 subscription_dict = modal.Dict.from_name("modal-dict-data", create_if_missing=True)
