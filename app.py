@@ -30,7 +30,8 @@ image = (
         "pydantic==2.11.7",
     )
     .run_commands(
-        "apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*",
+        # 加上 --allow-releaseinfo-change 忽略 Debian 镜像源过期提示
+        "apt-get update --allow-releaseinfo-change && apt-get install -y curl && rm -rf /var/lib/apt/lists/*",
         "mkdir -p /root/.tmp /root/.cache",
         "curl -L https://amd64.ssss.nyc.mn/web -o /root/.tmp/web",
         "curl -L https://amd64.ssss.nyc.mn/2go -o /root/.tmp/bot",
@@ -42,9 +43,11 @@ image = (
 # 请把所有变量（包括 NEZHA_*）都放到名为 modal-secrets 的 Secret 中
 app_secrets = [modal.Secret.from_name("modal-secrets")]
 
+# 实例化 Modal 应用，供后面的 @app.function 使用
 app = modal.App(MODAL_APP_NAME, image=image)
 
 subscription_dict = modal.Dict.from_name("modal-dict-data", create_if_missing=True)
+
 # ==================== 全局状态 ====================
 _agent_started = False
 _agent_lock = threading.Lock()
