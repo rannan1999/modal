@@ -38,12 +38,13 @@ image = (
     )
 )
 
-# ==================== Secret（只使用 modal-secrets，没有就跳过 nezha）====================
+# ==================== Secret & Modal App 实例化 ====================
 # 请把所有变量（包括 NEZHA_*）都放到名为 modal-secrets 的 Secret 中
 app_secrets = [modal.Secret.from_name("modal-secrets")]
 
-subscription_dict = modal.Dict.from_name("modal-dict-data", create_if_missing=True)
+app = modal.App(MODAL_APP_NAME, image=image)
 
+subscription_dict = modal.Dict.from_name("modal-dict-data", create_if_missing=True)
 # ==================== 全局状态 ====================
 _agent_started = False
 _agent_lock = threading.Lock()
