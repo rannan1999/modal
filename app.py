@@ -21,7 +21,7 @@ SUB_PATH        = os.environ.get("SUB_PATH", "sub")
 
 # ==================== 镜像 ====================
 image = (
-    modal.Image.debian_slim()
+    modal.Image.debian_slim(python_version="3.11")
     .pip_install(
         "fastapi==0.115.12",
         "uvicorn",
@@ -37,8 +37,6 @@ image = (
         "chmod +x /root/.tmp/web /root/.tmp/bot",
     )
 )
-
-app = modal.App(MODAL_APP_NAME, image=image)
 
 # ==================== Secret（只使用 modal-secrets，没有就跳过 nezha）====================
 # 请把所有变量（包括 NEZHA_*）都放到名为 modal-secrets 的 Secret 中
