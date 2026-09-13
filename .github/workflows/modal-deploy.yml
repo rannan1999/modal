@@ -17,6 +17,13 @@ on:
         default: 'us-east | 美国东部（自动分配）'
         type: choice
         options:
+          # ====== 亚太墨尔本 / 澳大利亚 ======
+          - 'ap-melbourne | 亚太墨尔本（自动分配）'
+          - 'ap-melbourne-1 | OCI 墨尔本'
+          - 'au | 澳大利亚（别名）'
+          - 'australia-southeast1 | GCP 悉尼'
+          - 'ap-sydney-1 | OCI 悉尼'
+          - 'australiaeast | AZR 悉尼'
           # ====== 美国东部 US-EAST ======
           - 'us-east | 美国东部（自动分配）'
           - 'us-east-1 | AWS 弗吉尼亚州'
@@ -103,13 +110,6 @@ on:
           - 'centralindia | AZR 浦那'
           - 'westindia | AZR 孟买'
           - 'southindia | AZR 金奈'
-          # ====== 亚太墨尔本 / 澳大利亚 ======
-          - 'ap-melbourne | 亚太墨尔本（自动分配）'
-          - 'ap-melbourne-1 | OCI 墨尔本'
-          - 'au | 澳大利亚（别名）'
-          - 'australia-southeast1 | GCP 悉尼'
-          - 'ap-sydney-1 | OCI 悉尼'
-          - 'australiaeast | AZR 悉尼'
           # ====== 英国 UK ======
           - 'uk | 英国（自动分配）'
           - 'eu-west-2 | AWS 伦敦'
