@@ -1,1 +1,1 @@
-最后一次部署: 2026-09-13 23:53:31 UTC | 区域: eu-south-1 | URL: https://rannan1999--modal.App-web_server.modal.run
+最后一次部署: 2026-09-13 23:55:43 UTC | 区域: ap-northeast | URL: https://rannan1999--modal-app-web-server.modal.run
